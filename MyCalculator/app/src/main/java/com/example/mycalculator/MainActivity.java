@@ -150,9 +150,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private String evaluate(String expression) throws Exception {
+
+        int scale;
         String result = engine.eval(expression).toString();
         BigDecimal decimal = new BigDecimal(result);
-        return decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString();
+        if (decimal.doubleValue() % 1.0 == 0)
+            scale = 0;
+        else
+            scale = decimal.scale();
+
+        return decimal.setScale(scale, BigDecimal.ROUND_HALF_UP).toPlainString();
     }
 
     private void addNumber(String number) {
