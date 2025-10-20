@@ -69,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
         findBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String name = productName.getText().toString();
+                double price = productPrice.getText().toDouble();
+
+                Product product = new Product(name, price);
+                dbHandler.findProduct(product);
+
+                productName.setText("");
+                productPrice.setText("");
+                
                 Toast.makeText(MainActivity.this, "Find product", Toast.LENGTH_SHORT).show();
             }
         });
