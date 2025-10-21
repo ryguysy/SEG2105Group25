@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 productPrice.setText("");
 
 //                Toast.makeText(MainActivity.this, "Add product", Toast.LENGTH_SHORT).show();
-                viewProducts();
+                viewProducts(dbHandler.getData());
             }
         });
 
@@ -70,15 +70,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = productName.getText().toString();
-                double price = productPrice.getText().toDouble();
+                String sPrice = productPrice.getText().toString();
+
+                double price;
+
+                if (sPrice.isEmpty())
+                    price = -1;
+                else
+                    price = Double.parseDouble(sPrice);
 
                 Product product = new Product(name, price);
-                dbHandler.findProduct(product);
 
                 productName.setText("");
                 productPrice.setText("");
+
+                viewProducts(dbHandler.findProduct(product));
                 
-                Toast.makeText(MainActivity.this, "Find product", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Find product", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -94,18 +102,18 @@ public class MainActivity extends AppCompatActivity {
                 productPrice.setText("");
 
 //                Toast.makeText(MainActivity.this, "Add product", Toast.LENGTH_SHORT).show();
-                viewProducts();
+                viewProducts(dbHandler.getData());
                 //Toast.makeText(MainActivity.this, "Delete product", Toast.LENGTH_SHORT).show();
             }
         });
 
 
-        viewProducts();
+        viewProducts(dbHandler.getData());
     }
 
-    private void viewProducts() {
+    private void viewProducts(Cursor cursor) {
         productList.clear();
-        Cursor cursor = dbHandler.getData();
+        //Cursor cursor = dbHandler.getData();
         if (cursor.getCount() == 0) {
             Toast.makeText(MainActivity.this, "Nothing to show", Toast.LENGTH_SHORT).show();
         } else {

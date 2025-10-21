@@ -52,32 +52,21 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void findProduct(Product product) {
+    public Cursor findProduct(Product product) {
 
-        /***String query = "SELECT * FROM " + TABLE_NAME +
-         " WHERE (" + COLUMN_PRODUCT_NAME + " = ? OR ? = '')" +
-         " AND (" + COLUMN_PRODUCT_PRICE + " = ? OR ? = '')";
-         ***/
+
         SQLiteDatabase db = this.getReadableDatabase(); //Readable for SELECT
 
         String name = product.getProductName();
         String price = String.valueOf(product.getProductPrice());
 
-        String query = "SELECT * FROM " + TABLE_NAME;
-        if (name != null && name != ""){
-            query = query + " WHERE (" + COLUMN_PRODUCT_NAME + " = " + name + ")";
-        
-            if (price > 0){
-                query = query + " AND (" + COLUMN_PRODUCT_PRICE + " = " + price + ")";
-            }
-        }
+        String query = "SELECT * FROM " + TABLE_NAME +
+         " WHERE (" + COLUMN_PRODUCT_NAME + " = ? OR ? = '')" +
+         " AND (" + COLUMN_PRODUCT_PRICE + " = " + price + " OR " + price + " < 0)";
 
-        if (price > 0){
-            query = query + " WHERE (" + COLUMN_PRODUCT_PRICE + " = " + price + ")";
-        }
 
         //select from the database based on above conditions
-        return db.rawQuery(query, null);
+        return db.rawQuery(query, new String[] {name,name});
     }
     public void deleteProduct(Product product) {
         SQLiteDatabase db = this.getWritableDatabase();  // writable for DELETE
