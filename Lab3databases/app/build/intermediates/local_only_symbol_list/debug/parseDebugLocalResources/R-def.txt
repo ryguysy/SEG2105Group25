@@ -1,0 +1,31 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id addBtn
+id btnLayout
+id deleteBtn
+id findBtn
+id infoLayout
+id productId
+id productListView
+id productName
+id productPrice
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string add
+string app_name
+string delete
+string find
+string product_id
+string product_name
+string product_price
+style Theme.Lab3databases
