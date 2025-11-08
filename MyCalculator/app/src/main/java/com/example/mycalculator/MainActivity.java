@@ -20,17 +20,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView text_display;
 
     // This is to evaluate the math expression
-    ScriptEngine engine;
+    //ScriptEngine engine;
 
     enum Operator{none, add, minus, multiply, divide};
     Operator optr = Operator.none;
+
+
+    Evaluate e;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        engine = new ScriptEngineManager().getEngineByName( "rhino");
+        //engine = new ScriptEngineManager().getEngineByName( "rhino");
 
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
@@ -149,11 +152,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private String evaluate(String expression) throws Exception {
+    public String evaluate(String expression) throws Exception {
 
         int scale;
-        String result = engine.eval(expression).toString();
-        BigDecimal decimal = new BigDecimal(result);
+        //String result = engine.eval(expression).toString();
+        //BigDecimal decimal = new BigDecimal(result);
+
+        BigDecimal decimal = e.evaluate(expression);
         if (decimal.doubleValue() % 1.0 == 0)
             scale = 0;
         else
