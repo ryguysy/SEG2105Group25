@@ -26,4 +26,16 @@ public class ProductTest {
         assertEquals(0.99, product.getProductPrice(), 0.001);
         assertEquals(42, product.getId());
     }
+
+    @Test
+    public void failSettersAndId() {
+        Product product = new Product();
+        product.setProductName("banana");
+        product.setProductPrice(0.99);
+        product.setId(42);
+
+        assertEquals("Banana", product.getProductName());
+        assertEquals(0.99, product.getProductPrice(), 0.001);
+        assertEquals(42, product.getId());
+    }
 }

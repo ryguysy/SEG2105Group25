@@ -43,4 +43,43 @@ public class MyDBHandlerTest {
 
         cursor.close();
     }
+
+
+
+    @Test
+    public void testFindProduct() {
+        //Product product = new Product("Milk", 3.49);
+        //dbHandler.addProduct(product);
+
+        Cursor cursor = dbHandler.findProduct(new Product("", 3.49));
+        assertNotNull(cursor);
+        assertTrue(cursor.moveToFirst());
+
+        String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+        double price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"));
+
+        assertEquals("Milk", name);
+        assertEquals(3.49, price, 0.001);
+
+        cursor.close();
+    }
+
+    @Test
+    public void failFindProduct() {
+        //Product product = new Product("Milk", 3.49);
+        //dbHandler.addProduct(product);
+
+        Cursor cursor = dbHandler.findProduct(new Product("", 3));
+        assertNotNull(cursor);
+        assertTrue(cursor.moveToFirst());
+
+        String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+        double price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"));
+
+        assertEquals("Milk", name);
+        assertEquals(3.49, price, 0.001);
+
+        cursor.close();
+    }
+
 }
