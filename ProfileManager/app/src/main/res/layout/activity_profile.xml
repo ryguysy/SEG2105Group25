@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/select_a_new_avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:layout_width="371dp"
+        android:layout_height="309dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:stretchColumns='*'
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="ExtraText">
+
+            <ImageView
+                android:id="@+id/flag_jp"
+                android:layout_width="133dp"
+                android:layout_height="100dp"
+                android:onClick="SetTeamIcon"
+                app:srcCompat="@drawable/flag_jp" />
+
+            <ImageView
+                android:id="@+id/flag_ca"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="SetTeamIcon"
+                app:srcCompat="@drawable/flag_ca" />
+
+            <ImageView
+                android:id="@+id/flag_fr"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="SetTeamIcon"
+                app:srcCompat="@drawable/flag_fr" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/flag_eg"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="SetTeamIcon"
+                app:srcCompat="@drawable/flag_eg" />
+
+            <ImageView
+                android:id="@+id/flag_kr"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="SetTeamIcon"
+                app:srcCompat="@drawable/flag_kr" />
+
+            <ImageView
+                android:id="@+id/flag_sp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="SetTeamIcon"
+                app:srcCompat="@drawable/flag_sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/flag_tr"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="SetTeamIcon"
+                app:srcCompat="@drawable/flag_tr" />
+
+            <ImageView
+                android:id="@+id/flag_uk"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="SetTeamIcon"
+                app:srcCompat="@drawable/flag_uk" />
+
+            <ImageView
+                android:id="@+id/flag_us"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="SetTeamIcon"
+                app:srcCompat="@drawable/flag_us" />
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
